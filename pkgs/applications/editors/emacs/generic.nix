@@ -157,6 +157,7 @@ let emacs = (if withMacport then llvmPackages_6.stdenv else stdenv).mkDerivation
     ++ lib.optional withSQLite3 sqlite
     ++ lib.optional withWebP libwebp
     ++ lib.optionals (withX && withXwidgets) [ webkitgtk glib-networking ]
+    ++ lib.optionals (withNS && withXwidgets) [ WebKit ]
     ++ lib.optionals withNS [ AppKit GSS ImageIO ]
     ++ lib.optionals withMacport [
       AppKit Carbon Cocoa IOKit OSAKit Quartz QuartzCore WebKit
